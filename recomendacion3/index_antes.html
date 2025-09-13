@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .product-container, .recommended-products { margin: 20px; padding: 20px; }
+        .product-container { border-bottom: 1px solid #ccc; }
+        .recommended-product { border: 1px solid #ccc; padding: 10px; margin: 10px; display: inline-block; }
+        img { width: 100px; height: auto; }
+    </style>
+</head>
+<body>
+    <div class="product-container" id="product-details" data-product-id="555">
+        <h1>Harry Potter and The Sorcerer's Stone</h1>
+        <img src="http://books.google.com/books/content?id=HksgDQAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" alt="Nombre del Producto">
+        <p>Descripción del producto va aquí. Este texto puede ser una descripción más detallada del producto.</p>
+        <p>Precio: $99.99</p>
+    </div>
+
+    <div class="recommended-products">
+        <h3>Productos recomendados</h3>
+        <div id="recommendations-container">
+            <!-- Los productos recomendados se cargarán aquí -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const productId = document.getElementById('product-details').getAttribute('data-product-id');
+            
+            // Simulación de una llamada a API (esto deberías reemplazarlo por la llamada real)
+            // Simulamos una respuesta con setTimeout para emular una llamada de red
+            setTimeout(() => {
+                const data = [
+                    { id: '001', name: 'Producto Similar 1', image_url: 'https://via.placeholder.com/100', price: '49.99' },
+                    { id: '002', name: 'Producto Similar 2', image_url: 'https://via.placeholder.com/100', price: '39.99' },
+                    { id: '003', name: 'Producto Similar 3', image_url: 'https://via.placeholder.com/100', price: '59.99' }
+                ];
+
+                const container = document.getElementById('recommendations-container');
+                data.forEach(product => {
+                    const productDiv = document.createElement('div');
+                    productDiv.className = 'recommended-product';
+                    productDiv.innerHTML = `
+                        <h4>${product.name}</h4>
+                        <img src="${product.image_url}" alt="${product.name}" />
+                        <p>Precio: ${product.price}</p>
+                        <a href="/product/${product.id}">Ver producto</a>
+                    `;
+                    container.appendChild(productDiv);
+                });
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+
